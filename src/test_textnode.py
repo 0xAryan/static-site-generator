@@ -36,7 +36,7 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(
             "TextNode(This is a text node, text, www.google.com)", repr(node)
         )
-
+    
 
 if __name__ == "__main__":
     unittest.main()
