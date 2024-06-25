@@ -5,7 +5,7 @@ text_type_code = "code"
 text_type_link = "link"
 text_type_image = "image"
 
-
+from htmlnode import LeafNode
 
 
 class TextNode:
@@ -27,3 +27,21 @@ class TextNode:
     def __repr__(self):
         return f"TextNode({self.text}, {self.text_type}, {self.url})"
 
+
+def text_node_to_html_node(text_node):
+    t = text_node.text_type
+    
+    if t == text_type_text:
+        return LeafNode(value=text_node.text)
+    elif t == text_type_bold:
+        return LeafNode("b", text_node.text)
+    elif t == text_type_italic:
+        return LeafNode("i", text_node.text)
+    elif t == text_type_code:
+        return LeafNode("code", text_node.text)
+    elif t == text_type_link:
+        return LeafNode(tag="a", value=text_node.text, props={"href": text_node.url})
+    elif t == text_type_image:
+        return LeafNode("img", "", {"src": text_node.url, "alt": text_node.text})
+    else:
+        raise Exception(f"Invalid text type: {text_node.text_type}")
