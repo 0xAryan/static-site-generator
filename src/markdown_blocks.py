@@ -6,9 +6,7 @@ block_type_unordered_list = "unordered_list"
 block_type_ordered_list = "ordered_list"
 
 from htmlnode import(
-    HTMLNode,
     ParentNode,
-    LeafNode,
 )
 from itertools import takewhile
 from textnode import text_node_to_html_node
